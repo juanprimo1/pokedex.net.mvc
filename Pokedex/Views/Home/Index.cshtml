@@ -20,8 +20,8 @@
                     Todos</button>
                     @foreach (var tipo in tipos)
                     {
-                <button id="btn-aço" class="btn btn-sm my-2 text-white btn-filter"
-                    style="background-color: @tipo.Cor"> @tipo.Nome </button>
+                <button id="btn-@tipo.Nome" class="btn btn-sm my-2 text-white btn-filter"
+                    style="background-color: @tipo.Cor" onclick="filter('@tipo.Nome')"> @tipo.Nome </button>
                     }
             </div>
         </div>
@@ -38,7 +38,7 @@
 
             
             <div class="col" onclick="window.location = '/Home/Details/@pokemon.Numero'"> 
-                <div class="card shadow-sm cursor-pointer @string.Join(' ', pokemon.Tipo)">
+                <div class="card shadow-sm cursor-pointer">
                     <img src="@pokemon.Imagem" class="card-img-top" width="100%" height="320" alt="@pokemon.Nome" />
                     <div class="card-body">
                         <p class="card-text mb-0">Nº @pokemon.Numero.ToString("000")</p>
@@ -47,7 +47,7 @@
                             <div class="btn-group">
                                 @foreach (var tipo in pokemon.Tipo)
                                 {
-                                <a href="#" class="btn my-2 text-white" style="background-color: @Cor(tipo)">@tipo</a>
+                                <a href="#" class="btn my-2 text-white" style="background-color: @Cor(tipo)" onclick="filter('@tipo')">@tipo</a>
                                 }
                             </div>
                         </div>
@@ -56,7 +56,7 @@
             </div>
             <!-- Card Pokemon - Fim -->
             }
-            <div id="zeroPokemon" class="col-lg-12 text-center" hidden>
+            <div id="zeroPokemon" class="col-lg-12 text-center d-none">
                 <h1 class="my-3 text-danger">Nenhum Pokemon Encontrado</h1>
             </div>
         </div>
